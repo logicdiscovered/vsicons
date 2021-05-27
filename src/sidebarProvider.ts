@@ -37,7 +37,7 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
           }
           //vscode.window.showWarningMessage(data.value);
           //const fileurl = webviewView.webview.asWebviewUri( vscode.Uri.joinPath(this._extensionUri,data.value));
-          vscode.commands.executeCommand("study.Vsicons",data.value);
+          vscode.commands.executeCommand("vsicons.vsicons",data.value);
           break;
         }
         case "onError": {
@@ -63,10 +63,10 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
       vscode.Uri.joinPath(this._extensionUri, "media", "vscode.css")
     );
     const scriptUri = webview.asWebviewUri(
-      vscode.Uri.joinPath(this._extensionUri, "out", "compiled/sidebar.js")
+      vscode.Uri.joinPath(this._extensionUri, "media/views", "Sidebar.js")
     );
     const styleMainUri = webview.asWebviewUri(
-      vscode.Uri.joinPath(this._extensionUri, "out", "compiled/sidebar.css")
+      vscode.Uri.joinPath(this._extensionUri, "media/views", "Sidebar.css")
     );
    
 

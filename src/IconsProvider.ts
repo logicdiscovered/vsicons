@@ -30,7 +30,7 @@ export class VsiconsPanel {
     // Otherwise, create a new panel.
     const panel = vscode.window.createWebviewPanel(
       VsiconsPanel.viewType,
-      "VsIcon",
+      "VsIcons",
       column || vscode.ViewColumn.One,
       {
         // Enable javascript in the webview
@@ -38,8 +38,7 @@ export class VsiconsPanel {
 
         // And restrict the webview to only loading content from our extension's `media` directory.
         localResourceRoots: [
-          vscode.Uri.joinPath(extensionUri, "media"),
-          vscode.Uri.joinPath(extensionUri, "out/compiled"),
+          vscode.Uri.joinPath(extensionUri, "media")
         ],
       }
     );
@@ -156,10 +155,10 @@ export class VsiconsPanel {
   private _getHtmlForWebview(webview: vscode.Webview) {
     // // And the uri we use to load this script in the webview
     const scriptUri = webview.asWebviewUri(
-      vscode.Uri.joinPath(this._extensionUri, "out/compiled", "Vsicons.js")
+      vscode.Uri.joinPath(this._extensionUri, "media/views", "Vsicons.js")
     );
     const styleMainUri = webview.asWebviewUri(
-      vscode.Uri.joinPath(this._extensionUri, "out/compiled", "Vsicons.css")
+      vscode.Uri.joinPath(this._extensionUri, "media/views", "Vsicons.css")
     );
 
     // // Uri to load styles into webview
@@ -173,11 +172,7 @@ export class VsiconsPanel {
       "media",
       "vscode.css"
     ));
-    // const cssUri = webview.asWebviewUri(
-    //   vscode.Uri.joinPath(this._extensionUri, "out", "compiled/swiper.css")
-    // );
 
-    // Use a nonce to only allow specific scripts to be run
     const nonce = getNonce();
 
     return `<!DOCTYPE html>

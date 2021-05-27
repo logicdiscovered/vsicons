@@ -1,9 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import { business } from './icons';
 import { VsiconsPanel } from './IconsProvider';
-import {traverseDirectory } from './Main';
 import { SidebarProvider } from './sidebarProvider';
 
 // this method is called when your extension is activated
@@ -17,9 +15,7 @@ export function activate(context: vscode.ExtensionContext) {
 		sidebarProvider
 	  )
 	);
-	context.subscriptions.push(vscode.commands.registerCommand('study.Vsicons', (data ="") => {
-       console.log(data);
-
+	context.subscriptions.push(vscode.commands.registerCommand('vsicons.vsicons', (data ="") => {
 		if(data !== ""){
 
 			// traverseDirectory(data, function(err:any, result:any) {
@@ -28,7 +24,7 @@ export function activate(context: vscode.ExtensionContext) {
 			// 	  return;
 			// 	}else{
 			// 		console.log(result);
-				 VsiconsPanel._view?.webview.postMessage({ type:"all",value:business });
+				 VsiconsPanel._view?.webview.postMessage({ type:"all",value:data });
 			// 	}
 				
 				
@@ -42,40 +38,7 @@ export function activate(context: vscode.ExtensionContext) {
 		
 	})
 	);
-	context.subscriptions.push(vscode.commands.registerCommand('study.selection', () => {
-		
-		const {activeTextEditor} = vscode.window;
-
-		if(!activeTextEditor){
-			
-			vscode.window.showErrorMessage("no editor is opened");
-			return;
-		}
-
-		// const text = activeTextEditor.document.getText(activeTextEditor.selection);
-		// const text = activeTextEditor.document.;
-
-		//vscode.window.showInformationMessage("selection:"+text);
-	})
-
-	);
-	context.subscriptions.push(vscode.commands.registerCommand('study.refresh', () => {
-		VsiconsPanel.kill();
-         vscode.commands.executeCommand('workbench.action.reloadWindow');
-		VsiconsPanel.createOrShow(context.extensionUri);
-	})
-
-	);
-	context.subscriptions.push(vscode.commands.registerCommand('study.copyicon', async () => {
-		const result = await vscode.window.showInformationMessage('copy the icon','svg','png');
-		if(result ==="svg" || result==="png"){
-			vscode.window.showInformationMessage("copied !");
-		}else {
-			console.log("user did not click any where");
-		}
-	})
-
-	);
+	
 }
 
 // this method is called when your extension is deactivated
