@@ -2,22 +2,58 @@
 	"name": "vsicons",
 	"displayName": "vsicons",
 	"description": "bring icons inside your project",
+	"publisher": "logicdiscovered",
 	"version": "0.0.1",
+	"homepage": "https://github.com/tuyishimejeandamour/vsicons",
+	"bugs": {
+		"url": "https://github.com/tuyishimejeandamour/vsicons/issues",
+		"email": "tuyishimejeand88@gmail.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/tailwindlabs/tailwindcss-intellisense.git"
+	},
 	"engines": {
 		"vscode": "^1.56.0"
 	},
 	"categories": [
 		"Other"
 	],
+	"icon": "media/images/stanicon.png",
 	"activationEvents": [
-		"onCommand:vsicons.helloWorld"
+		"onView:stanicon-sidebar",
+		"onCommand:vsicons.vsicons"
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "vsicon-sidebar-view",
+					"title": "Vsicons",
+					"icon": "media/images/stanicon.svg"
+				}
+			]
+		},
+		"views": {
+			"vsicons-sidebar-view": [
+				{
+					"type": "webview",
+					"id": "vsicons-sidebar",
+					"name": "vsicons",
+					"icon": "media/images/stanicon.svg",
+					"contextualTitle": "Vsicons"
+				},
+				{
+					"id": "recentsavedicons",
+					"name": "collections"
+				}
+			]
+		},
 		"commands": [
 			{
-				"command": "vsicons.helloWorld",
-				"title": "Hello World"
+				"command": "vsicons.vsicons",
+				"title": "vsicons"
 			}
 		]
 	},
@@ -47,5 +83,8 @@
 		"ts-loader": "^8.0.14",
 		"webpack": "^5.19.0",
 		"webpack-cli": "^4.4.0"
+	},
+	"dependencies": {
+		"svelte-color-picker": "^1.0.7"
 	}
 }
