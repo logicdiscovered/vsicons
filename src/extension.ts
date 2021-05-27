@@ -1,26 +1,81 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import { business } from './icons';
+import { VsiconsPanel } from './IconsProvider';
+import {traverseDirectory } from './Main';
+import { SidebarProvider } from './sidebarProvider';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "vsicons" is now active!');
+	const sidebarProvider = new SidebarProvider(context.extensionUri);
+	context.subscriptions.push(
+	  vscode.window.registerWebviewViewProvider(
+		"stanicon-sidebar",
+		sidebarProvider
+	  )
+	);
+	context.subscriptions.push(vscode.commands.registerCommand('study.Vsicons', (data ="") => {
+       console.log(data);
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('vsicons.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
+		if(data !== ""){
 
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from vsicons!');
-	});
+			// traverseDirectory(data, function(err:any, result:any) {
+			// 	if (err) {
+			// 	  console.log(err);
+			// 	  return;
+			// 	}else{
+			// 		console.log(result);
+				 VsiconsPanel._view?.webview.postMessage({ type:"all",value:business });
+			// 	}
+				
+				
+			//   });
+			VsiconsPanel.createOrShow(context.extensionUri);
+		}else{
+			
+		    VsiconsPanel._view?.webview.postMessage({type:"all"});
+			VsiconsPanel.createOrShow(context.extensionUri);
+		}
+		
+	})
+	);
+	context.subscriptions.push(vscode.commands.registerCommand('study.selection', () => {
+		
+		const {activeTextEditor} = vscode.window;
 
-	context.subscriptions.push(disposable);
+		if(!activeTextEditor){
+			
+			vscode.window.showErrorMessage("no editor is opened");
+			return;
+		}
+
+		// const text = activeTextEditor.document.getText(activeTextEditor.selection);
+		// const text = activeTextEditor.document.;
+
+		//vscode.window.showInformationMessage("selection:"+text);
+	})
+
+	);
+	context.subscriptions.push(vscode.commands.registerCommand('study.refresh', () => {
+		VsiconsPanel.kill();
+         vscode.commands.executeCommand('workbench.action.reloadWindow');
+		VsiconsPanel.createOrShow(context.extensionUri);
+	})
+
+	);
+	context.subscriptions.push(vscode.commands.registerCommand('study.copyicon', async () => {
+		const result = await vscode.window.showInformationMessage('copy the icon','svg','png');
+		if(result ==="svg" || result==="png"){
+			vscode.window.showInformationMessage("copied !");
+		}else {
+			console.log("user did not click any where");
+		}
+	})
+
+	);
 }
 
 // this method is called when your extension is deactivated
