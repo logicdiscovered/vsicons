@@ -21,7 +21,7 @@
 	],
 	"icon": "media/images/stanicon.png",
 	"activationEvents": [
-		"onView:stanicon-sidebar",
+		"onView:stanicons-sidebar",
 		"onCommand:vsicons.vsicons"
 	],
 	"main": "./dist/extension.js",
@@ -29,7 +29,7 @@
 		"viewsContainers": {
 			"activitybar": [
 				{
-					"id": "vsicon-sidebar-view",
+					"id": "vsicons-sidebar-view",
 					"title": "Vsicons",
 					"icon": "media/images/stanicon.svg"
 				}
