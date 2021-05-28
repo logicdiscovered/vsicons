@@ -7,6 +7,8 @@
 
 Vsicons is the extension that provides all Remix icons directly into your VS code editor and gives you quick access to edit and download icon svg to your project. 
 
+![image](https://user-images.githubusercontent.com/73703812/120030006-314eb080-bff7-11eb-92c0-341738c09cbc.png)
+
 - insert to the project folder
 - copy the svg and insert into the html project
 - ✨Magic ✨
