@@ -5,7 +5,7 @@
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
-Vsicons is the extension that provides all Remix icons directly into your VS code editor and gives you quick access to edit and download svg. 
+Vsicons is the extension that provides all Remix icons directly into your VS code editor and gives you quick access to edit and download icon svg to your project. 
 
 - insert to the project folder
 - copy the svg and insert into the html project
