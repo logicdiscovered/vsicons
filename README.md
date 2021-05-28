@@ -5,9 +5,9 @@
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
-Vsicons is the extension that provide all remixicon into your local machine and give you better access whelther by importing in your project of copy 
+Vsicons is the extension that provides all Remix icons directly into your VS code editor and gives you quick access to edit and download svg. 
 
-- insert to the project  folder
+- insert to the project folder
 - copy the svg and insert into the html project
 - ✨Magic ✨
 
@@ -25,3 +25,5 @@ Vsicons is the extension that provide with you icons no internet connection need
 > eleminate the use of importing large css file
 > stop using icon tag in html then use the svg for better perfomance
 > using svg provide quick loading of your page
+
+[marketplace]: https://marketplace.visualstudio.com/items?itemName=logicdiscovered.vsicons
