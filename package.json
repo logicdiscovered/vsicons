@@ -19,7 +19,7 @@
 	"categories": [
 		"Other"
 	],
-	"icon": "media/images/stanicon.png",
+	"icon": "media/images/logo.png",
 	"activationEvents": [
 		"onView:stanicons-sidebar",
 		"onCommand:vsicons.vsicons"
